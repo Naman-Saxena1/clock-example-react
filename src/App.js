@@ -1,25 +1,30 @@
+import {useState} from "react";
 import logo from './logo.svg';
 import './App.css';
 
+let initialTime = new Date().toLocaleString();
+
 function App() {
+  let [time, setTime] = useState(initialTime)
+  function tick()
+  {
+    setTime(new Date().toLocaleString())
+  }
+
+  setInterval(tick, 1000)
+  
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>React Clock</h1>
+      <div>
+          <span id="jsClock">
+            {time}
+          </span>
+      </div>
     </div>
   );
 }
+
+
 
 export default App;
